@@ -18,6 +18,19 @@ lsp.configure('lua-language-server', {
     }
 })
 
+lsp.configure('tailwindcss-language-server', {
+    settings = {
+        tailwindcss = {
+            experimental = {
+                classRegex = {
+                    { "cva\\(([^)]*)\\)",
+                    "[\"'`]([^\"'`]*).*?[\"'`]" },
+                }
+            }
+        }
+    }
+})
+
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
