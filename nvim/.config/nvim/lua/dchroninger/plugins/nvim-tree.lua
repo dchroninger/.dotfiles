@@ -25,7 +25,7 @@ nvimtree.setup({
     },
   },
   filters = {
-      dotfiles=true,
+      dotfiles=false,
   },
   -- disable window_picker for
   -- explorer to work well with
