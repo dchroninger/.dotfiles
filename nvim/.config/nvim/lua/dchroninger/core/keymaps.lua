@@ -18,22 +18,15 @@ keymap.set('n', 'ss', '<C-w>s') -- horizontal
 keymap.set('n', 'sv', '<C-w>v') -- vertical
 keymap.set('n', 'se', '<C-w>=') -- equalize windows
 keymap.set('n', 'sx', ':close<CR>') -- close window
--- -- Move window
-keymap.set('n', '<Space>', '<C-w>w')
-keymap.set('', 'sh', '<C-w>h')
-keymap.set('', 'sk', '<C-w>k')
-keymap.set('', 'sj', '<C-w>j')
-keymap.set('', 'sl', '<C-w>l')
-keymap.set('', 'sm', ':MaximizerToggle<CR>')
 
--- Tab Management
+-- Buffer Management
 keymap.set('n', 'tn', '<Cmd>bnext<CR>')
 keymap.set('n', 'tp', '<Cmd>bprevious<CR>')
 keymap.set('n', '<leader>q', '<Cmd>:BufDel<CR>')
 keymap.set('n', '<leader>Q', '<Cmd>:BufDel!<CR>')
 
-keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("n", "J", "mzJ`z")
 
 -- Moving around
@@ -61,7 +54,6 @@ keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-
 
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
