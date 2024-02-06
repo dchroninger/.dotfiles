@@ -1,2 +1,3 @@
 **/nvim/pack/**
-.DS_Ignore
+karabiner/automatic_backups
+bin
