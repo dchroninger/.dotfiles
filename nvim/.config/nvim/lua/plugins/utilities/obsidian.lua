@@ -60,6 +60,10 @@ return {
     return out
   end,
 
+  folow_url_func = function(url)
+    vim.fn.jobstart({ "open", url })
+  end,
+
   templates = {
     subdir = "templates",
     date_format = "%Y-%m-%d-%a",
