@@ -7,6 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 path+=(~/dotfiles/scripts)
+path+=(~/brain)
 export PATH
 
 # Path to your oh-my-zsh installation.
