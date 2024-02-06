@@ -109,6 +109,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias g=git
+alias vim='nvim'
 alias gst='git status'
 alias ide='sh ide.sh'
 

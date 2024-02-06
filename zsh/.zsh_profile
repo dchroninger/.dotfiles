@@ -1,4 +1,4 @@
-VIM="nvim"
+export VIM="nvim"
 
 export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dotfiles
@@ -8,7 +8,3 @@ addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/bin
 addToPathFront $HOME/.local/n/bin/
-
-# Where should I put you?
-bindkey -s ^f "tmux-sessionizer\n"
-
