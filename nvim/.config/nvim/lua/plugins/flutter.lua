@@ -1,13 +1,16 @@
 return {
   {
     "akinsho/flutter-tools.nvim",
-    lazy = false,
+    lazy = true,
+    ft = "dart",
+
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
     },
+
     config = function()
-      require("flutter-tools").setup({})
+      require("plugins.flutter").setup({})
     end,
   },
 }

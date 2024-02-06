@@ -1,4 +1,3 @@
--- https://github.com/epwalsh/obsidian.nvim
 return {
   "epwalsh/obsidian.nvim",
   lazy = true,
@@ -12,15 +11,19 @@ return {
 
   opts = {
     dir = "~/brain",
+
     daily_notes = {
       folder = "daily",
     },
+
     notes_subdir = "notes",
+
     completion = {
       nvim_cmp = true,
       min_chars = 2,
       new_notes_location = "notes_subdir",
     },
+
     follow_url_func = function(url)
       vim.fn.jobstart({ "open", url })
     end,
@@ -28,6 +31,8 @@ return {
 
   config = function(_, opts)
     require("obsidian").setup(opts)
+
+    ---@diagnostic disable-next-line: missing-fields
     require("nvim-treesitter.configs").setup({
       ensure_installed = { "markdown", "markdown_inline" },
       highlight = {
