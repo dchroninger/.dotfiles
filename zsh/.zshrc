@@ -1,3 +1,6 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -16,17 +19,12 @@ alias g=git
 alias vim='nvim'
 alias gst='git status'
 alias gcm='git commit -m'
-alias dotfiles='vim ~/dotfiles'
+alias dotfiles='vim ~/.dotfiles'
 
 export PNPM_HOME="/Users/dave/Library/pnpm"
 export PATH="$HOME/go/bin:$PNPM_HOME:$PATH"
 export PATH="$HOME/fvm/default/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# enable chruby
-source /opt/homebrew/share/chruby/chruby.sh
-source /opt/homebrew/share/chruby/auto.sh
-chruby ruby-3.2.2
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
