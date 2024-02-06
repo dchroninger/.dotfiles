@@ -121,6 +121,8 @@ source $(brew --prefix nvm)/nvm.sh
 ## Java Config
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
+export PATH="$HOME/go/bin:$PATH"
+
 ## Ruby Config
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
