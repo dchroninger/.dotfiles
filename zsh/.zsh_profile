@@ -2,7 +2,6 @@ export VIM="nvim"
 
 export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dotfiles
-export N_PREFIX="$HOME/.local/n"
 
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/scripts
