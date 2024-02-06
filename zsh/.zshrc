@@ -116,6 +116,12 @@ alias ide='sh ide.sh'
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+## Java Config
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+## Ruby Config
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
 # pnpm
 export PNPM_HOME="/Users/dave/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
