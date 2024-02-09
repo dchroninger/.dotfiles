@@ -2,8 +2,8 @@ return {
   "epwalsh/obsidian.nvim",
   lazy = true,
   event = {
-    "BufReadPre " .. vim.fn.expand("~") .. "/vault/personal/**.md",
-    "BufReadPre " .. vim.fn.expand("~") .. "/vault/work/**.md",
+    "BufReadPre " .. vim.fn.expand("~") .. "/notes/personal/**.md",
+    "BufReadPre " .. vim.fn.expand("~") .. "/notes/work/**.md",
   },
 
   dependencies = {
@@ -13,7 +13,10 @@ return {
   },
 
   opts = {
-    dir = "~/brain",
+    workspaces = {
+      { name = "personal", path = vim.fn.expand("~") .. "/notes/personal" },
+      { name = "work", path = vim.fn.expand("~") .. "/notes/work" },
+    },
 
     daily_notes = {
       folder = "daily",
