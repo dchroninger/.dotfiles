@@ -2,8 +2,8 @@ return {
   "epwalsh/obsidian.nvim",
   lazy = true,
   event = {
-    "BufReadPre " .. vim.fn.expand("~") .. "/brain/**.md",
-    "BufReadPre " .. vim.fn.expand("~") .. "/work/**.md",
+    "BufReadPre " .. vim.fn.expand("~") .. "/vault/personal/**.md",
+    "BufReadPre " .. vim.fn.expand("~") .. "/vault/work/**.md",
   },
 
   dependencies = {
