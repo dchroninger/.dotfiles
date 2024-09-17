@@ -24,7 +24,7 @@ return {
 
 		templates = {
 			subdir = "templates",
-			date_format = "%Y-%m-%d-%a",
+			date_format = "%Y-%m-%d",
 			time_format = "%H:%M",
 		},
 
@@ -36,9 +36,26 @@ return {
 			min_chars = 2,
 		},
 
+		---@param title string|?
+		---@return string
+		note_id_func = function(title)
+			local suffix = ""
+			if title ~= nil then
+				suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+			else
+				for _ = 1, 4 do
+					suffix = suffix .. string.char(math.random(65, 90))
+				end
+			end
+			return tostring(os.time()) .. "_" .. suffix
+		end,
+
 		follow_url_func = function(url)
 			vim.fn.jobstart({ "open", url })
 		end,
+
+		open_app_foreground = false,
+		finder = "telescope.nvim",
 	},
 
 	config = function(_, opts)
@@ -66,27 +83,7 @@ return {
 		vim.keymap.set("n", "<leader>of", "<cmd>ObsidianQuickSwitch<CR>")
 		vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>")
 		vim.keymap.set("n", "<leader>or", "<cmd>ObsidianRename<CR>")
-		vim.keymap.set("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>")
-		vim.keymap.set("n", "<leader>oT", "<cmd>ObsidianNewFromTemplate<CR>")
+		vim.keymap.set("n", "<leader>oT", "<cmd>ObsidianTemplate<CR>")
+		vim.keymap.set("n", "<leader>ot", "<cmd>ObsidianNewFromTemplate<CR>")
 	end,
-
-	note_frontmatter_func = function(note)
-		local out = { aliases = note.aliases, tags = note.tags }
-		if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
-			for k, v in pairs(note.metadata) do
-				out[k] = v
-			end
-		end
-		return out
-	end,
-
-	folow_url_func = function(url)
-		vim.fn.jobstart({ "open", url })
-	end,
-
-	--  TODO: Add function to create meeting note
-	--  TODO: Add function to create class note
-
-	open_app_foreground = false,
-	finder = "telescope.nvim",
 }
