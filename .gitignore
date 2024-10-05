@@ -2,4 +2,4 @@
 kitty/.config/kitty/background.png
 karabiner/.config/karabiner/automatic_backups
 bin
-**/.DS_Store
+.DS_Store

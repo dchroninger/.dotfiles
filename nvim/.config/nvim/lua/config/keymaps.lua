@@ -7,3 +7,5 @@ keymap.set("n", "<leader>rs", ":LspRestart<cr>")
 keymap.set("n", "<leader>ps", ":TimerStart 25m Pomodoro<cr>", { desc = "Start a Pomodoro work cycle" })
 keymap.set("n", "<leader>pb", ":TimerStart 5m Break<cr>", { desc = "Start a Pomodoro break cycle" })
 keymap.set("n", "<leader>px", ":Timerstop -1<cr>", { desc = "Stop all Pomodoro timers" })
+
+keymap.set("n", "<leader>cP", ":! mdpdf %<cr>", { desc = "Export MarkDown to PDF" })
