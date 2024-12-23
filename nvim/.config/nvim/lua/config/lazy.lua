@@ -9,38 +9,29 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-  spec = {
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    { import = "lazyvim.plugins.extras.ai.copilot" },
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.tailwind" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
-    { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
-    { import = "lazyvim.plugins.extras.test.core" },
-    { import = "lazyvim.plugins.extras.dap.core" },
-    { import = "plugins" },
-  },
+	spec = {
+		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		{ import = "plugins" },
+	},
 
-  defaults = {
-    lazy = true,
-    version = false, -- always use the latest git commit
-  },
+	defaults = {
+		lazy = true,
+		version = false, -- always use the latest git commit
+	},
 
-  install = { colorscheme = { "catppuccin", "habamax" } },
+	install = { colorscheme = { "catppuccin", "habamax" } },
 
-  checker = { enabled = true },
+	checker = { enabled = true, notify = false },
 
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
-  },
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
 })
