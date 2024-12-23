@@ -1,5 +1,5 @@
 **/nvim/pack/**
-kitty/.config/kitty/background.png
+kitty/.config/kitty/backgrounds/
 karabiner/.config/karabiner/automatic_backups
 bin
 .DS_Store
