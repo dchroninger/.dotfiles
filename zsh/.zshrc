@@ -10,17 +10,17 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Source Powerlevel10k theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# Which plugins would you like to load?
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 # Source Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
-# Which plugins would you like to load?
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+# Source Powerlevel10k theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # User configuration
-alias g=git
+alias g='git'
 alias vim='nvim'
 alias gst='git status'
 alias gcm='git commit -m'
@@ -33,39 +33,50 @@ export PATH="$HOME/fvm/default/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$PATH:$HOME/.pub-cache/bin"
 
-# Source Powerlevel10k configuration
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Alias for shuf (GNU Coreutils) if installed via Homebrew
 # This ensures 'shuf' is available as 'shuf' instead of 'gshuf'
 if command -v gshuf >/dev/null 2>&1; then
     alias shuf='gshuf'
 fi
 
-# Set a random Kitty background image on startup
-if [[ -n "$KITTY_WINDOW_ID" && -z "$KITTY_BACKGROUND_SET" ]]; then
-    # Directory containing background images
-    backgrounds_dir="$HOME/.config/kitty/backgrounds"
+# Function to set a random Kitty background image on startup
+shuffle_kitty_background() {
+    # Check if the Kitty window ID is set and the background has not been set
+    if [[ -n "$KITTY_WINDOW_ID" && -z "$KITTY_BACKGROUND_SET" ]]; then
+        # Directory containing background images
+        backgrounds_dir="$HOME/.config/kitty/backgrounds"
 
-    # Check if the backgrounds directory exists
-    if [[ -d "$backgrounds_dir" ]]; then
-        # Select a random image using find and sort -R for better handling of filenames
-        random_image=$(find "$backgrounds_dir" -type f | sort -R | head -n 1)
+        # Check if the backgrounds directory exists
+        if [[ -d "$backgrounds_dir" ]]; then
+            # Select a random image using find and sort -R for better handling of filenames
+            random_image=$(find "$backgrounds_dir" -type f | sort -R | head -n 1)
 
-        # Check if a valid image was found
-        if [[ -f "$random_image" ]]; then
-            # Set the background image using Kitty's kitten command
-            kitten @ set-background-image "$random_image"
-            clear
+            # Check if a valid image was found
+            if [[ -f "$random_image" ]]; then
+                # Set the background image using Kitty's kitten command
+                kitten @ set-background-image "$random_image"
+                clear
 
-            # Export a variable to indicate that the background has been set for this session
-            export KITTY_BACKGROUND_SET=1
+                # Export a variable to indicate that the background has been set for this session
+                export KITTY_BACKGROUND_SET=1
+            else
+                echo "No valid image found in $backgrounds_dir."
+            fi
         else
-            echo "No valid image found in $backgrounds_dir."
+            echo "Backgrounds directory $backgrounds_dir does not exist."
         fi
-    else
-        echo "Backgrounds directory $backgrounds_dir does not exist."
     fi
-fi
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+}
 
+
+# Easy to use function to shuffle the terminal background image
+kittybg() {
+    unset KITTY_BACKGROUND_SET
+    shuffle_kitty_background
+}
+
+# Run shuffle_kitty_background on startup
+shuffle_kitty_background
+
+# Source Powerlevel10k configuration if it exists
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
