@@ -24,7 +24,7 @@ alias g=git
 alias vim='nvim'
 alias gst='git status'
 alias gcm='git commit -m'
-alias dotfiles='vim ~/.dotfiles'
+alias dotfiles='cd ~/.dotfiles && vim'
 
 # Path configurations
 export PNPM_HOME="$HOME/Library/pnpm"
