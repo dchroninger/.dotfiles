@@ -12,12 +12,14 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Source Powerlevel10k theme
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Source Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
 # Which plugins would you like to load?
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+plugins=(git web-search)
 
 # User configuration
 alias g=git
@@ -25,14 +27,18 @@ alias vim='nvim'
 alias gst='git status'
 alias gcm='git commit -m'
 alias dotfiles='cd ~/.dotfiles && vim'
+eval $(thefuck --alias)
 
 # Path configurations
-export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$HOME/go/bin:$PNPM_HOME:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/fvm/default/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="$PATH:$HOME/.pub-cache/bin"
-export PATH="$PATH:/opt/homebrew/kitten"
+export PATH="$HOME/.pub-cache/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 
  ide() {
   tmux split-window -v -l 30%
@@ -49,30 +55,6 @@ if command -v gshuf >/dev/null 2>&1; then
     alias shuf='gshuf'
 fi
 
-# Define the 'kittybg' function to set a random background
-kbg() {
-    local backgrounds_dir="$HOME/.config/kitty/backgrounds"
-
-    # Check if the backgrounds directory exists
-    if [[ -d "$backgrounds_dir" ]]; then
-        # Select a random image
-        local image
-        if command -v shuf >/dev/null 2>&1; then
-            image=$(find "$backgrounds_dir" -type f | shuf -n 1)
-        else
-            # Use sort -R as a fallback if shuf is not available
-            image=$(find "$backgrounds_dir" -type f | sort -R | head -n 1)
-        fi
-
-        # Check if a valid image was found
-        if [[ -f "$image" ]]; then
-            # Set the background image using Kitty's kitten command
-            # Suppress any output
-            kitten @ set-background-image "$image" >/dev/null 2>&1
-
-        fi
-    fi
-}
-
 # Source Powerlevel10k configuration
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
